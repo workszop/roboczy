@@ -1,0 +1,943 @@
+<!doctype html>
+<html lang="pl" data-theme="kontur">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>System RAG i agent e-mail – ilustracje</title>
+<meta name="description" content="Trzy proste ilustracje do artykułu (system RAG, agent e-mail, upraszczanie języka) w dziesięciu wariantach graficznych.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Geist+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&family=DM+Serif+Display&family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@500;700&family=Work+Sans:wght@400;600;700;800&family=Nunito:wght@500;700;800;900&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@1.27.0/dist/umd/lucide.min.js"></script>
+<style>
+/* ─── Chrome tokens (switcher bar, independent of the figure themes) ─── */
+:root {
+  --chrome-bg: #ffffff;
+  --chrome-fg: #0a0a0a;
+  --chrome-line: #0a0a0a;
+  --chrome-font: "Geist Mono", ui-monospace, monospace;
+  --gutter: clamp(16px, 4vw, 56px);
+  --link-w: 58px;
+}
+
+/* ─── Theme 1: Kontur (black and white, sharp, mono labels) ─── */
+:root, [data-theme="kontur"] {
+  --page-bg: #ffffff;
+  --page-fg: #0a0a0a;
+  --soft-fg: #3d3d3a;
+
+  --font-title: "Manrope", system-ui, sans-serif;
+  --font-body: "Manrope", system-ui, sans-serif;
+  --font-label: "Geist Mono", ui-monospace, monospace;
+  --font-meta: "Geist Mono", ui-monospace, monospace;
+  --title-size: clamp(20px, 2vw, 26px);
+  --title-weight: 800;
+  --title-tracking: -0.02em;
+  --title-transform: none;
+  --title-style: normal;
+  --node-title-size: 15.5px;
+  --node-title-weight: 700;
+  --label-size: 11px;
+  --label-weight: 600;
+  --label-tracking: 0.1em;
+  --label-transform: uppercase;
+  --label-style: normal;
+  --meta-size: 10.5px;
+  --body-size: 14px;
+  --quote-style: normal;
+
+  --fig-bg: #ffffff;
+  --fig-border: 1.5px solid #0a0a0a;
+  --fig-radius: 0;
+  --fig-shadow: none;
+  --fig-pad: clamp(20px, 2.4vw, 32px);
+  --fig-pattern: none;
+
+  --node-bg: #ffffff;
+  --node-fg: #0a0a0a;
+  --node-border: 1.5px solid #0a0a0a;
+  --node-radius: 0;
+  --node-shadow: none;
+  --n1-bg: var(--node-bg); --n1-fg: var(--node-fg);
+  --n2-bg: var(--node-bg); --n2-fg: var(--node-fg);
+  --n3-bg: var(--node-bg); --n3-fg: var(--node-fg);
+  --alt-bg: var(--node-bg);
+  --alt-fg: var(--node-fg);
+  --alt-border-style: dashed;
+
+  --step-color: #0a0a0a;
+  --icon-color: currentColor;
+  --link-color: #0a0a0a;
+  --badge-bg: #0a0a0a;
+  --badge-fg: #ffffff;
+  --badge-border: 0;
+  --badge-radius: 0;
+  --alt-badge-bg: #ffffff;
+  --alt-badge-fg: #0a0a0a;
+  --alt-badge-border: 1px dashed #0a0a0a;
+  --bar-radius: 0;
+
+  --swap-border: 1.5px solid #0a0a0a;
+  --swap-radius: 0;
+  --swap-old-bg: #ffffff;
+  --swap-old-fg: #0a0a0a;
+  --swap-new-bg: #0a0a0a;
+  --swap-new-fg: #ffffff;
+}
+
+/* ─── Theme 2: Miękki (black and white, rounded, soft surfaces, no mono) ─── */
+[data-theme="miekki"] {
+  --page-bg: #ffffff;
+  --page-fg: #141413;
+  --soft-fg: #4a4945;
+  --font-label: "Manrope", system-ui, sans-serif;
+  --font-meta: "Manrope", system-ui, sans-serif;
+  --label-size: 12px;
+  --label-weight: 700;
+  --label-tracking: 0;
+  --label-transform: none;
+  --meta-size: 12px;
+  --title-weight: 700;
+  --title-tracking: -0.025em;
+
+  --fig-bg: #f4f3f0;
+  --fig-border: 0;
+  --fig-radius: 24px;
+  --fig-pad: clamp(22px, 3vw, 40px);
+
+  --node-bg: #ffffff;
+  --node-fg: #141413;
+  --node-border: 1px solid #e3e1db;
+  --node-radius: 16px;
+  --node-shadow: 0 1px 2px rgba(20, 20, 19, 0.06), 0 10px 28px rgba(20, 20, 19, 0.07);
+  --alt-bg: transparent;
+  --alt-border-style: dashed;
+
+  --step-color: #141413;
+  --link-color: #8f8c84;
+  --badge-bg: #141413;
+  --badge-fg: #ffffff;
+  --badge-radius: 999px;
+  --alt-badge-bg: #ebe9e4;
+  --alt-badge-fg: #141413;
+  --alt-badge-border: 0;
+  --bar-radius: 99px;
+
+  --swap-border: 1px solid #d9d6cf;
+  --swap-radius: 999px;
+  --swap-old-bg: #ffffff;
+  --swap-old-fg: #4a4945;
+  --swap-new-bg: #141413;
+  --swap-new-fg: #ffffff;
+}
+
+/* ─── Theme 3: Quantica (brand pink and violet, rounded) ─── */
+[data-theme="quantica"] {
+  --page-bg: #ffffff;
+  --page-fg: #111111;
+  --soft-fg: #111111;
+  --title-weight: 800;
+
+  --fig-bg: #f5f6f8;
+  --fig-border: 1px solid #e6e8ec;
+  --fig-radius: 18px;
+
+  --node-bg: #ffffff;
+  --node-fg: #111111;
+  --node-border: 1.5px solid #d1d5db;
+  --node-radius: 12px;
+  --n1-bg: #ffffff;
+  --alt-bg: #ffffff;
+
+  --step-color: #d20757;
+  --icon-color: #d20757;
+  --link-color: #514d88;
+  --badge-bg: #ffe6f1;
+  --badge-fg: #8a004c;
+  --badge-radius: 6px;
+  --alt-badge-bg: #f5f6f8;
+  --alt-badge-fg: #111111;
+  --alt-badge-border: 1px dashed #d1d5db;
+  --bar-radius: 3px;
+
+  --swap-border: 1.5px solid #d20757;
+  --swap-radius: 8px;
+  --swap-old-bg: #ffffff;
+  --swap-old-fg: #111111;
+  --swap-new-bg: #d20757;
+  --swap-new-fg: #ffffff;
+}
+[data-theme="quantica"] .node[data-step="2"] { --node-border: 1.5px solid #514d88; }
+[data-theme="quantica"] .node:not(.alt)[data-step="3"] { --node-border: 1.5px solid #d20757; }
+
+/* ─── Theme 4: Redakcyjny (white, serif, double-rule boxes, small caps) ─── */
+[data-theme="redakcja"] {
+  --page-bg: #ffffff;
+  --page-fg: #161412;
+  --soft-fg: #4a433c;
+  --font-title: "Source Serif 4", Georgia, serif;
+  --font-body: "Source Serif 4", Georgia, serif;
+  --font-label: "Source Serif 4", Georgia, serif;
+  --font-meta: "Source Serif 4", Georgia, serif;
+  --title-size: clamp(22px, 2.3vw, 30px);
+  --title-weight: 600;
+  --title-tracking: -0.005em;
+  --title-style: italic;
+  --node-title-size: 17px;
+  --node-title-weight: 700;
+  --label-size: 14px;
+  --label-weight: 600;
+  --label-tracking: 0.08em;
+  --label-transform: lowercase;
+  --meta-size: 14px;
+  --body-size: 15.5px;
+  --quote-style: italic;
+
+  --fig-bg: #ffffff;
+  --fig-border: 0;
+  --fig-border-top: 4px double #161412;
+  --fig-border-bottom: 1px solid #161412;
+  --fig-pad: clamp(20px, 2.2vw, 30px) 0 clamp(24px, 2.6vw, 34px);
+
+  --node-bg: #ffffff;
+  --node-fg: #161412;
+  --node-border: 4px double #161412;
+  --alt-border-style: dotted;
+
+  --step-color: #9b1c1c;
+  --icon-color: #9b1c1c;
+  --link-color: #161412;
+  --badge-bg: #ffffff;
+  --badge-fg: #9b1c1c;
+  --badge-border: 1px solid #9b1c1c;
+  --alt-badge-bg: #ffffff;
+  --alt-badge-fg: #4a433c;
+  --alt-badge-border: 1px dotted #4a433c;
+
+  --swap-border: 0;
+  --swap-old-bg: transparent;
+  --swap-old-fg: #4a433c;
+  --swap-new-bg: transparent;
+  --swap-new-fg: #9b1c1c;
+}
+[data-theme="redakcja"] .fig-no, [data-theme="redakcja"] .step-no { font-variant: small-caps; }
+[data-theme="redakcja"] .node.alt { border-width: 2px; }
+[data-theme="redakcja"] .badge { font-style: italic; }
+[data-theme="redakcja"] .swap b { font-weight: 700; padding-left: 0; }
+[data-theme="redakcja"] .swap b::before { content: "→ "; color: var(--page-fg); font-weight: 400; }
+[data-theme="redakcja"] .swap s { padding-right: 4px; font-style: italic; }
+[data-theme="redakcja"] .step-no::after { width: 40px; height: 1px; }
+
+/* ─── Theme 5: Techniczny (white, dot grid, tab labels, Plex Sans + Plex Mono) ─── */
+[data-theme="plan"] {
+  --page-bg: #ffffff;
+  --page-fg: #0f172a;
+  --soft-fg: #334155;
+  --font-title: "IBM Plex Mono", ui-monospace, monospace;
+  --font-body: "IBM Plex Sans", system-ui, sans-serif;
+  --font-label: "IBM Plex Mono", ui-monospace, monospace;
+  --font-meta: "IBM Plex Mono", ui-monospace, monospace;
+  --title-size: clamp(16px, 1.6vw, 20px);
+  --title-weight: 600;
+  --title-tracking: 0.02em;
+  --title-transform: uppercase;
+  --node-title-size: 15px;
+  --node-title-weight: 600;
+  --label-weight: 600;
+  --label-tracking: 0.08em;
+  --meta-size: 11.5px;
+  --body-size: 14px;
+
+  --fig-bg: #ffffff;
+  --fig-border: 1px solid #0f172a;
+  --fig-pattern: radial-gradient(#cbd5e1 1px, transparent 1.4px) 0 0 / 16px 16px;
+
+  --node-bg: #ffffff;
+  --node-fg: #0f172a;
+  --node-border: 1px solid #0f172a;
+  --node-shadow: 4px 4px 0 #dbeafe;
+
+  --step-color: #ffffff;
+  --icon-color: #1d4ed8;
+  --link-color: #1d4ed8;
+  --badge-bg: #eff6ff;
+  --badge-fg: #1d4ed8;
+  --badge-border: 1px solid #1d4ed8;
+  --alt-badge-bg: #ffffff;
+  --alt-badge-fg: #334155;
+  --alt-badge-border: 1px dashed #334155;
+
+  --swap-border: 1px solid #1d4ed8;
+  --swap-old-bg: #ffffff;
+  --swap-old-fg: #334155;
+  --swap-new-bg: #1d4ed8;
+  --swap-new-fg: #ffffff;
+}
+[data-theme="plan"] .node { padding-top: 0; }
+[data-theme="plan"] .step-no { background: #1d4ed8; padding: 3px 8px; margin: -1px 0 0 -19px; }
+[data-theme="plan"] .node.alt .step-no { background: #ffffff; color: #0f172a; border: 1px dashed #0f172a; }
+[data-theme="plan"] .step-no::after { display: none; }
+[data-theme="plan"] .fig-no { color: #1d4ed8; }
+[data-theme="plan"] .node.alt { --node-shadow: none; }
+
+/* ─── Theme 6: Kolorowy (white, coloured full contours, pill labels) ─── */
+[data-theme="kolor"] {
+  --page-bg: #ffffff;
+  --page-fg: #1c1917;
+  --soft-fg: #44403c;
+  --font-title: "Nunito", system-ui, sans-serif;
+  --font-body: "Nunito", system-ui, sans-serif;
+  --font-label: "Nunito", system-ui, sans-serif;
+  --font-meta: "Nunito", system-ui, sans-serif;
+  --title-size: clamp(22px, 2.3vw, 30px);
+  --title-weight: 900;
+  --title-tracking: -0.01em;
+  --node-title-size: 17px;
+  --node-title-weight: 800;
+  --label-size: 12px;
+  --label-weight: 900;
+  --label-tracking: 0.08em;
+  --meta-size: 13px;
+  --body-size: 15px;
+
+  --fig-bg: #ffffff;
+  --fig-border: 1.5px solid #e7e5e4;
+  --fig-radius: 28px;
+  --fig-pad: clamp(22px, 3vw, 40px);
+
+  --node-bg: #ffffff;
+  --node-fg: #1c1917;
+  --node-radius: 20px;
+  --n1-accent: #7a5ac2;
+  --n2-accent: #177aa8;
+  --n3-accent: #078342;
+  --alt-accent: #c92823;
+
+  --step-color: #ffffff;
+  --link-color: #a8a29e;
+  --badge-radius: 999px;
+  --alt-badge-radius: 999px;
+  --bar-radius: 99px;
+
+  --swap-border: 2px solid #1c1917;
+  --swap-radius: 999px;
+  --swap-old-bg: #ffffff;
+  --swap-old-fg: #44403c;
+  --swap-new-bg: #1c1917;
+  --swap-new-fg: #ffffff;
+}
+[data-theme="kolor"] .node { --accent: var(--n1-accent); border: 2.5px solid var(--accent); box-shadow: 0 10px 24px -12px var(--accent); }
+[data-theme="kolor"] .node[data-step="2"] { --accent: var(--n2-accent); }
+[data-theme="kolor"] .node[data-step="3"] { --accent: var(--n3-accent); }
+[data-theme="kolor"] .node.alt { --accent: var(--alt-accent); border-style: dashed; box-shadow: none; }
+[data-theme="kolor"] .node .icon { color: var(--accent); }
+[data-theme="kolor"] .step-no { background: var(--accent); padding: 3px 10px; border-radius: 999px; }
+[data-theme="kolor"] .step-no::after { display: none; }
+[data-theme="kolor"] .badge, [data-theme="kolor"] .node.alt .badge { background: color-mix(in srgb, var(--accent) 12%, #ffffff); color: #1c1917; border: 0; }
+[data-theme="kolor"] .badge .icon { color: var(--accent); }
+[data-theme="kolor"] .bars i { background: var(--accent); }
+[data-theme="kolor"] .node.alt .bars i { background: repeating-linear-gradient(135deg, var(--accent) 0 1.5px, transparent 1.5px 5px); border-color: var(--accent); }
+[data-theme="kolor"] .fig-no { color: #7a5ac2; }
+
+/* ─── Theme 7: Rubryka (news-magazine infographic: condensed caps, giant red numerals, solid arrows) ─── */
+[data-theme="rubryka"] {
+  --page-bg: #ffffff;
+  --page-fg: #121212;
+  --soft-fg: #3b3b3b;
+  --font-title: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-body: "Barlow", system-ui, sans-serif;
+  --font-label: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-meta: "Barlow", system-ui, sans-serif;
+  --title-size: clamp(28px, 3vw, 40px);
+  --title-weight: 800;
+  --title-tracking: 0;
+  --title-transform: uppercase;
+  --node-title-size: 21px;
+  --node-title-weight: 700;
+  --label-size: 14px;
+  --label-weight: 700;
+  --label-tracking: 0.04em;
+  --meta-size: 13.5px;
+  --body-size: 15px;
+
+  --fig-bg: #ffffff;
+  --fig-border: 0;
+  --fig-border-top: 6px solid #121212;
+  --fig-border-bottom: 1px solid #121212;
+  --fig-pad: 18px 0 30px;
+
+  --node-bg: #ffffff;
+  --node-fg: #121212;
+  --node-border: 0;
+  --node-border-top: 3px solid #121212;
+  --alt-border-style: dashed;
+
+  --step-color: #e3120b;
+  --icon-color: #e3120b;
+  --link-color: #121212;
+  --link-dash: none;
+  --link-width: 3;
+  --badge-bg: #e3120b;
+  --badge-fg: #ffffff;
+  --alt-badge-bg: #ffffff;
+  --alt-badge-fg: #e3120b;
+  --alt-badge-border: 1.5px dashed #e3120b;
+
+  --swap-border: 0;
+  --swap-old-bg: transparent;
+  --swap-old-fg: #3b3b3b;
+  --swap-new-bg: #e3120b;
+  --swap-new-fg: #ffffff;
+}
+[data-theme="rubryka"] .fig-no { background: #e3120b; color: #ffffff; padding: 2px 10px; font-size: 16px; }
+[data-theme="rubryka"] .node { padding: 10px 4px 4px; }
+[data-theme="rubryka"] .step-no { font-family: "Barlow Condensed", sans-serif; font-size: 56px; font-weight: 800; line-height: 0.95; letter-spacing: -0.01em; }
+[data-theme="rubryka"] .step-no::after { display: none; }
+[data-theme="rubryka"] .node h3 { text-transform: uppercase; margin-top: 4px; }
+[data-theme="rubryka"] .flowz { align-items: start; }
+[data-theme="rubryka"] .branch-links { justify-content: space-around; padding-top: 60px; }
+[data-theme="rubryka"] .bars i { background: #e3120b; }
+[data-theme="rubryka"] .node.alt .bars i { background: repeating-linear-gradient(135deg, #121212 0 1.5px, transparent 1.5px 5px); border-color: #121212; }
+[data-theme="rubryka"] .swap b { font-family: "Barlow Condensed", sans-serif; font-size: 15px; text-transform: uppercase; letter-spacing: 0.03em; }
+[data-theme="rubryka"] .swap s { padding-left: 0; }
+[data-theme="rubryka"] .plain .link-cell span { font-family: "Barlow Condensed", sans-serif; font-size: 13px; font-weight: 700; color: #e3120b; }
+
+/* ─── Theme 8: Pop (lifestyle-magazine infographic: colour blocks, serif display, numbered discs, stickers) ─── */
+[data-theme="pop"] {
+  --page-bg: #ffffff;
+  --page-fg: #14213d;
+  --soft-fg: #3a4560;
+  --font-title: "DM Serif Display", Georgia, serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+  --font-label: "DM Sans", system-ui, sans-serif;
+  --font-meta: "DM Sans", system-ui, sans-serif;
+  --title-size: clamp(28px, 3vw, 40px);
+  --title-weight: 400;
+  --title-tracking: -0.01em;
+  --node-title-size: 22px;
+  --node-title-weight: 400;
+  --label-size: 12px;
+  --label-weight: 700;
+  --label-tracking: 0.14em;
+  --meta-size: 13.5px;
+  --body-size: 15px;
+
+  --fig-bg: #ffffff;
+  --fig-border: 0;
+  --fig-pad: 8px 0 24px;
+
+  --node-border: 0;
+  --node-radius: 6px;
+  --n1-bg: #fca311; --n1-fg: #14213d;
+  --n2-bg: #14213d; --n2-fg: #ffffff;
+  --n3-bg: #1f7a70; --n3-fg: #ffffff;
+  --alt-bg: #ffffff;
+  --alt-fg: #14213d;
+
+  --step-color: #14213d;
+  --icon-color: currentColor;
+  --link-color: #14213d;
+  --link-dash: none;
+  --link-width: 2.5;
+  --badge-bg: #ffffff;
+  --badge-fg: #14213d;
+  --badge-radius: 999px;
+  --alt-badge-bg: #fff1d6;
+  --alt-badge-fg: #14213d;
+  --alt-badge-border: 0;
+  --bar-radius: 99px;
+
+  --swap-border: 2px solid #14213d;
+  --swap-radius: 4px;
+  --swap-old-bg: #ffffff;
+  --swap-old-fg: #3a4560;
+  --swap-new-bg: #fca311;
+  --swap-new-fg: #14213d;
+}
+[data-theme="pop"] .fig-head { margin-bottom: 44px; }
+[data-theme="pop"] .fig-no { color: #e76f51; }
+[data-theme="pop"] .node { position: relative; padding: 38px 20px 20px; }
+[data-theme="pop"] .node.alt { border: 2px dashed #14213d; }
+[data-theme="pop"] .step-no {
+  position: absolute; top: -26px; left: 16px; width: 52px; height: 52px; justify-content: center;
+  border-radius: 50%; background: #ffffff; color: #14213d; border: 2.5px solid #14213d;
+  font-family: "DM Serif Display", serif; font-size: 19px; font-weight: 400; letter-spacing: 0;
+}
+[data-theme="pop"] .step-no::after { display: none; }
+[data-theme="pop"] .plain .step-no { width: auto; padding: 0 14px; border-radius: 999px; font-family: "DM Sans", sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; height: 34px; top: -17px; }
+[data-theme="pop"] .branch-targets { gap: 38px; }
+[data-theme="pop"] .swaps { gap: 14px; margin-top: 30px; }
+[data-theme="pop"] .swap { transform: rotate(-1.5deg); box-shadow: 3px 3px 0 #14213d; }
+[data-theme="pop"] .swap:nth-child(even) { transform: rotate(1.2deg); }
+[data-theme="pop"] .swap b { font-weight: 700; }
+
+/* ─── Theme 9: Rozjazd (decision point with conditions; outputs are alternatives) ─── */
+[data-theme="rozjazd"] {
+  --page-bg: #ffffff;
+  --page-fg: #111827;
+  --soft-fg: #374151;
+  --font-title: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Space Grotesk", system-ui, sans-serif;
+  --font-label: "JetBrains Mono", ui-monospace, monospace;
+  --font-meta: "Space Grotesk", system-ui, sans-serif;
+  --title-size: clamp(22px, 2.2vw, 28px);
+  --title-weight: 700;
+  --title-tracking: -0.02em;
+  --node-title-size: 16px;
+  --node-title-weight: 700;
+  --label-weight: 500;
+  --meta-size: 13px;
+  --body-size: 14.5px;
+
+  --fig-bg: #ffffff;
+  --fig-border: 1.5px solid #111827;
+  --fig-radius: 14px;
+
+  --node-bg: #ffffff;
+  --node-fg: #111827;
+  --node-border: 1.5px solid #111827;
+  --node-radius: 10px;
+
+  --step-color: #111827;
+  --link-color: #111827;
+  --link-dash: none;
+  --badge-bg: #111827;
+  --badge-fg: #ffffff;
+  --badge-radius: 6px;
+  --alt-badge-bg: #ffffff;
+  --alt-badge-fg: #111827;
+  --alt-badge-border: 1px dashed #111827;
+  --bar-radius: 3px;
+
+  --swap-border: 1.5px solid #111827;
+  --swap-radius: 6px;
+  --swap-new-bg: #111827;
+  --swap-new-fg: #ffffff;
+
+  --decision: #e8590c;
+}
+[data-theme="rozjazd"] .flowz { --link-w: 76px; }
+[data-theme="rozjazd"] .cond {
+  display: inline-flex; align-items: center; gap: 6px; margin: 0 0 8px;
+  font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--decision);
+  border: 1.5px solid var(--decision); border-radius: 999px; padding: 2px 9px;
+}
+[data-theme="rozjazd"] .or {
+  display: flex; align-items: center; gap: 10px; margin: -10px 0;
+  font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--decision);
+}
+[data-theme="rozjazd"] .or::before, [data-theme="rozjazd"] .or::after { content: ""; flex: 1; border-top: 1.5px dashed var(--decision); }
+[data-theme="rozjazd"] .branch-links { position: relative; }
+[data-theme="rozjazd"] .branch-links .link { margin-left: 22px; width: calc(100% - 22px); }
+[data-theme="rozjazd"] .branch-links::before { content: ""; position: absolute; left: 21px; border-left: 1.5px solid #111827; top: calc(50% / var(--n)); bottom: calc(50% / var(--n)); }
+[data-theme="rozjazd"] .branch-links[data-n="2"] { --n: 2; }
+[data-theme="rozjazd"] .branch-links[data-n="3"] { --n: 3; }
+[data-theme="rozjazd"] .decision {
+  display: grid; place-items: center; position: absolute; z-index: 1; left: 6px; top: 50%; width: 32px; height: 32px; margin-top: -16px;
+  background: var(--decision); color: #ffffff; transform: rotate(45deg); border-radius: 4px;
+  font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 17px;
+}
+[data-theme="rozjazd"] .decision b { transform: rotate(-45deg); }
+[data-theme="rozjazd"] .branch-targets { gap: 18px; }
+
+/* ─── Theme 10: Przykłady (example inputs A/B/C matched to the output each one produces) ─── */
+[data-theme="przyklady"] {
+  --page-bg: #ffffff;
+  --page-fg: #18181b;
+  --soft-fg: #3f3f46;
+  --font-title: "Work Sans", system-ui, sans-serif;
+  --font-body: "Work Sans", system-ui, sans-serif;
+  --font-label: "Geist Mono", ui-monospace, monospace;
+  --font-meta: "Work Sans", system-ui, sans-serif;
+  --title-size: clamp(22px, 2.2vw, 28px);
+  --title-weight: 800;
+  --title-tracking: -0.025em;
+  --node-title-size: 16px;
+  --node-title-weight: 700;
+  --meta-size: 13px;
+  --body-size: 14.5px;
+
+  --fig-bg: #fafafa;
+  --fig-border: 1px solid #e4e4e7;
+  --fig-radius: 8px;
+
+  --node-bg: #ffffff;
+  --node-fg: #18181b;
+  --node-border: 1.5px solid #18181b;
+  --node-radius: 6px;
+
+  --step-color: #18181b;
+  --link-color: #71717a;
+  --badge-bg: #f4f4f5;
+  --badge-fg: #18181b;
+  --badge-radius: 4px;
+  --alt-badge-bg: #f4f4f5;
+  --alt-badge-fg: #18181b;
+  --alt-badge-border: 0;
+  --bar-radius: 2px;
+
+  --swap-border: 1.5px solid #18181b;
+  --swap-radius: 4px;
+  --swap-new-bg: #18181b;
+  --swap-new-fg: #ffffff;
+
+  --k-a: #0f766e;
+  --k-b: #c2410c;
+  --k-c: #6d28d9;
+}
+[data-theme="przyklady"] .flowz .node[data-step="1"] > .quote { display: none; }
+[data-theme="przyklady"] .inputs { display: flex; }
+[data-theme="przyklady"] .inputs li { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; line-height: 1.4; padding: 7px 9px; border: 1.5px solid var(--k); border-radius: 6px; }
+[data-theme="przyklady"] .key {
+  display: inline-grid; place-items: center; flex: none; width: 22px; height: 22px; border-radius: 50%;
+  background: var(--k); color: #ffffff; font-family: "Geist Mono", monospace; font-size: 11px; font-weight: 600;
+}
+[data-theme="przyklady"] [data-k="a"], [data-theme="przyklady"] li:has([data-k="a"]), [data-theme="przyklady"] .node:has(h3 [data-k="a"]) { --k: var(--k-a); }
+[data-theme="przyklady"] [data-k="b"], [data-theme="przyklady"] li:has([data-k="b"]), [data-theme="przyklady"] .node:has(h3 [data-k="b"]) { --k: var(--k-b); }
+[data-theme="przyklady"] [data-k="c"], [data-theme="przyklady"] li:has([data-k="c"]), [data-theme="przyklady"] .node:has(h3 [data-k="c"]) { --k: var(--k-c); }
+[data-theme="przyklady"] .node h3 .key { width: 26px; height: 26px; font-size: 12px; }
+[data-theme="przyklady"] .node:has(h3 .key) { border: 2px solid var(--k); }
+[data-theme="przyklady"] .node.alt:has(h3 .key) { border-style: dashed; }
+[data-theme="przyklady"] .node:has(h3 .key) .icon { color: var(--k); }
+[data-theme="przyklady"] .cond { display: block; font-size: 12.5px; font-style: italic; color: var(--soft-fg); margin: -2px 0 2px; }
+[data-theme="przyklady"] .same { display: block; margin-top: 10px; padding-top: 8px; border-top: 1px dashed #a1a1aa; font-family: "Geist Mono", monospace; font-size: 10.5px; color: var(--soft-fg); }
+
+/* ─── Base ─── */
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page-bg); color: var(--page-fg); font-family: var(--font-body); font-size: var(--body-size); line-height: 1.5; -webkit-font-smoothing: antialiased; transition: background 0.25s; }
+h2, h3, p { margin: 0; }
+main { padding: var(--gutter); display: flex; flex-direction: column; gap: clamp(40px, 6vw, 80px); }
+.icon { width: 18px; height: 18px; flex: none; stroke-width: 1.75; color: var(--icon-color); }
+
+/* ─── Chrome: variant switcher ─── */
+.chrome { position: sticky; top: 0; z-index: 5; display: flex; align-items: center; gap: 6px 14px; flex-wrap: wrap; padding: 10px var(--gutter); background: var(--chrome-bg); color: var(--chrome-fg); border-bottom: 1.5px solid var(--chrome-line); font-family: var(--chrome-font); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+.chrome .ttl { font-weight: 600; margin-right: 6px; }
+.chrome .opts { display: flex; flex-wrap: wrap; gap: 4px; }
+.chrome button { font: inherit; letter-spacing: inherit; text-transform: inherit; color: var(--chrome-fg); background: var(--chrome-bg); border: 1px solid var(--chrome-line); padding: 6px 10px; cursor: pointer; }
+.chrome button kbd { font: inherit; opacity: 0.55; margin-right: 6px; }
+.chrome button[aria-pressed="true"] { background: var(--chrome-fg); color: var(--chrome-bg); }
+.chrome .hint { margin-left: auto; text-transform: none; letter-spacing: 0; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ─── Figure ─── */
+.fig { margin: 0; background: var(--fig-pattern), var(--fig-bg); border: var(--fig-border); border-top: var(--fig-border-top, var(--fig-border)); border-bottom: var(--fig-border-bottom, var(--fig-border)); border-radius: var(--fig-radius); box-shadow: var(--fig-shadow); padding: var(--fig-pad); }
+.fig-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 26px; flex-wrap: wrap; }
+.fig-no { font-family: var(--font-label); font-size: var(--label-size); font-weight: var(--label-weight); letter-spacing: var(--label-tracking); text-transform: var(--label-transform); font-style: var(--label-style); color: var(--step-color); }
+.fig-title { font-family: var(--font-title); font-size: var(--title-size); font-weight: var(--title-weight); letter-spacing: var(--title-tracking); text-transform: var(--title-transform); font-style: var(--title-style); line-height: 1.2; }
+.caption { font-size: calc(var(--body-size) - 1.5px); color: var(--soft-fg); max-width: 80ch; }
+
+/* ─── Flow ─── */
+.flowz { display: grid; grid-template-columns: 1fr var(--link-w) 1.15fr var(--link-w) 1.15fr; align-items: center; }
+.node { --bg: var(--node-bg); --fg: var(--node-fg); background: var(--bg); color: var(--fg); border: var(--node-border); border-top: var(--node-border-top, var(--node-border)); border-radius: var(--node-radius); box-shadow: var(--node-shadow); padding: 18px 18px 16px; }
+.node[data-step="1"] { --bg: var(--n1-bg); --fg: var(--n1-fg); }
+.node[data-step="2"] { --bg: var(--n2-bg); --fg: var(--n2-fg); }
+.node[data-step="3"] { --bg: var(--n3-bg); --fg: var(--n3-fg); }
+.node.alt { --bg: var(--alt-bg); --fg: var(--alt-fg); border-style: var(--alt-border-style); }
+.step-no { font-family: var(--font-label); font-size: var(--label-size); font-weight: var(--label-weight); letter-spacing: var(--label-tracking); text-transform: var(--label-transform); font-style: var(--label-style); color: var(--step-color); display: inline-flex; align-items: center; gap: 8px; }
+.step-no::after { content: ""; width: 26px; height: 1.5px; background: currentColor; }
+.node h3 { font-family: var(--font-title); font-size: var(--node-title-size); font-weight: var(--node-title-weight); text-transform: none; line-height: 1.25; letter-spacing: -0.01em; margin: 10px 0 6px; display: flex; align-items: center; gap: 9px; }
+.node[data-step] .icon { color: var(--icon-color); }
+[data-theme="kolor"] .node .icon { color: currentColor; }
+.quote { font-size: calc(var(--body-size) - 1px); line-height: 1.55; font-style: var(--quote-style); }
+.quote::before { content: "\201E"; }
+.quote::after { content: "\201D"; }
+.checks { display: flex; flex-direction: column; gap: 7px; margin-top: 4px; }
+.check { display: flex; align-items: flex-start; gap: 8px; font-family: var(--font-meta); font-size: var(--meta-size); line-height: 1.5; }
+.check .icon { width: 13px; height: 13px; margin-top: 2px; }
+.badge { margin-top: 10px; display: inline-flex; align-items: flex-start; gap: 7px; font-family: var(--font-meta); font-size: var(--meta-size); line-height: 1.5; padding: 6px 10px; background: var(--badge-bg); color: var(--badge-fg); border: var(--badge-border); border-radius: var(--badge-radius); }
+.badge .icon { width: 13px; height: 13px; margin-top: 2px; color: currentColor; }
+.node.alt .badge { background: var(--alt-badge-bg); color: var(--alt-badge-fg); border: var(--alt-badge-border); }
+
+.link { width: 100%; height: 14px; display: block; }
+.link line { stroke: var(--link-color); stroke-width: var(--link-width, 1.5); stroke-dasharray: var(--link-dash, 4 5); }
+.link path { fill: var(--link-color); }
+.branch-links { display: flex; flex-direction: column; align-self: stretch; justify-content: space-around; }
+.branch-targets { display: flex; flex-direction: column; gap: 18px; }
+
+/* ─── Optional input/condition elements (hidden unless a theme shows them) ─── */
+.inputs, .same, .cond, .or, .key, .decision { display: none; }
+.inputs { list-style: none; margin: 4px 0 0; padding: 0; flex-direction: column; gap: 6px; }
+.node h3 .key { margin-left: auto; }
+
+/* ─── Plain language ─── */
+.plain { display: grid; grid-template-columns: 1fr var(--link-w) 1fr; align-items: stretch; }
+.plain .link-cell { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 6px; }
+.plain .link-cell span { font-family: var(--font-label); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; writing-mode: vertical-rl; color: var(--link-color); }
+.letter { font-size: var(--body-size); line-height: 1.65; margin: 4px 0 14px; }
+.stats { font-family: var(--font-meta); font-size: var(--meta-size); margin-bottom: 8px; }
+.bars { display: flex; flex-direction: column; gap: 4px; }
+.bars i { display: block; height: 8px; background: currentColor; width: var(--w); border-radius: var(--bar-radius); }
+.node.alt .bars i { background: repeating-linear-gradient(135deg, currentColor 0 1.5px, transparent 1.5px 5px); border: 1px solid currentColor; }
+.swaps { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.swap { font-family: var(--font-meta); font-size: var(--meta-size); border: var(--swap-border); border-radius: var(--swap-radius); display: inline-flex; overflow: hidden; }
+.swap s, .swap b { padding: 5px 10px; }
+.swap s { background: var(--swap-old-bg); color: var(--swap-old-fg); }
+.swap b { background: var(--swap-new-bg); color: var(--swap-new-fg); font-weight: 600; }
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .chrome .hint { display: none; }
+  .flowz, .plain { grid-template-columns: 1fr; }
+  .link { height: 34px; width: 14px; margin: 0 auto; transform: rotate(90deg); }
+  .branch-links { flex-direction: row; justify-content: center; gap: 60px; }
+  .plain .link-cell { flex-direction: row; padding: 4px 0; }
+  .plain .link-cell span { writing-mode: horizontal-tb; }
+}
+@media print { .chrome { display: none; } }
+@media (prefers-reduced-motion: reduce) { body { transition: none; } }
+</style>
+</head>
+<body>
+
+<nav class="chrome" aria-label="Wariant graficzny">
+  <span class="ttl">Wariant</span>
+  <div class="opts" id="themeOpts"></div>
+  <span class="hint">klawisze 1–9, 0 lub ← →</span>
+</nav>
+<div class="sr" aria-live="polite" id="liveRegion"></div>
+
+<main>
+
+<!-- ─── Rys. 1 System RAG ─── -->
+<figure class="fig" id="fig-rag">
+  <div class="fig-head"><span class="fig-no">Rys. 1</span><h2 class="fig-title">System RAG (chatbot) odpowiada pracownikowi na podstawie dokumentów firmy</h2></div>
+  <div class="flowz">
+    <div class="node" data-step="1">
+      <span class="step-no">01</span>
+      <h3><i data-lucide="message-square-text" class="icon"></i>Pytanie pracownika BOK</h3>
+      <p class="quote">Czy klient może rozłożyć zaległość za wodę na raty?</p>
+      <ul class="inputs" aria-label="Przykładowe pytania">
+        <li><span class="key" data-k="a">A</span>„Czy klient może rozłożyć zaległość za wodę na raty?”</li>
+        <li><span class="key" data-k="b">B</span>„Czy w 2027 roku zmieni się cena wody?”</li>
+      </ul>
+    </div>
+    <svg class="link" viewBox="0 0 58 14" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="7" x2="47" y2="7"/><path d="M47 2 L57 7 L47 12 Z"/></svg>
+    <div class="node" data-step="2">
+      <span class="step-no">02</span>
+      <h3><i data-lucide="scan-search" class="icon"></i>Przeszukanie wiedzy firmy</h3>
+      <div class="checks">
+        <div class="check"><i data-lucide="database" class="icon"></i>regulamin, procedury, zarządzenia</div>
+        <div class="check"><i data-lucide="key-round" class="icon"></i>tylko dokumenty, do których pracownik ma dostęp</div>
+        <div class="check"><i data-lucide="list-ordered" class="icon"></i>wybór najtrafniejszych fragmentów</div>
+      </div>
+      <p class="same">każde pytanie przechodzi tę samą ścieżkę</p>
+    </div>
+    <div class="branch-links" data-n="2" aria-hidden="true">
+      <span class="decision"><b>?</b></span>
+      <svg class="link" viewBox="0 0 58 14" preserveAspectRatio="none"><line x1="0" y1="7" x2="47" y2="7"/><path d="M47 2 L57 7 L47 12 Z"/></svg>
+      <svg class="link" viewBox="0 0 58 14" preserveAspectRatio="none"><line x1="0" y1="7" x2="47" y2="7"/><path d="M47 2 L57 7 L47 12 Z"/></svg>
+    </div>
+    <div class="branch-targets">
+      <div class="node" data-step="3">
+        <span class="step-no">03A</span>
+        <h3><i data-lucide="file-check" class="icon"></i>Odpowiedź ze źródłami<span class="key" data-k="a">A</span></h3>
+        <p class="cond">jeśli dokumenty zawierają odpowiedź</p>
+        <p class="quote">Tak, do 12 rat, jeśli zaległość przekracza 500 zł.</p>
+        <span class="badge"><i data-lucide="quote" class="icon"></i>Procedura windykacji, § 4</span>
+      </div>
+      <div class="or">albo</div>
+      <div class="node alt" data-step="3">
+        <span class="step-no">03B</span>
+        <h3><i data-lucide="info" class="icon"></i>Brak informacji w dokumentach<span class="key" data-k="b">B</span></h3>
+        <p class="cond">jeśli w dokumentach nie ma odpowiedzi</p>
+        <span class="badge"><i data-lucide="signpost" class="icon"></i>nie zgaduje, wskazuje właściwy dział</span>
+      </div>
+    </div>
+  </div>
+</figure>
+
+<!-- ─── Rys. 2 Agent e-mail ─── -->
+<figure class="fig" id="fig-email">
+  <div class="fig-head"><span class="fig-no">Rys. 2</span><h2 class="fig-title">Agent e-mail czyta wiadomość od mieszkańca i przygotowuje sprawę</h2></div>
+  <div class="flowz">
+    <div class="node" data-step="1">
+      <span class="step-no">01</span>
+      <h3><i data-lucide="inbox" class="icon"></i>E-mail mieszkańca</h3>
+      <p class="quote">Rachunek trzy razy wyższy niż zwykle. W załączniku zdjęcie wodomierza.</p>
+      <ul class="inputs" aria-label="Przykładowe wiadomości">
+        <li><span class="key" data-k="a">A</span>„Do której czynny jest BOK?”</li>
+        <li><span class="key" data-k="b">B</span>„Rachunek trzy razy wyższy niż zwykle.”</li>
+        <li><span class="key" data-k="c">C</span>„Od rana nie ma wody na ul. Polnej.”</li>
+      </ul>
+    </div>
+    <svg class="link" viewBox="0 0 58 14" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="7" x2="47" y2="7"/><path d="M47 2 L57 7 L47 12 Z"/></svg>
+    <div class="node" data-step="2">
+      <span class="step-no">02</span>
+      <h3><i data-lucide="scan-search" class="icon"></i>Analiza wiadomości</h3>
+      <div class="checks">
+        <div class="check"><i data-lucide="file-text" class="icon"></i>treść i odczyt ze zdjęcia</div>
+        <div class="check"><i data-lucide="tag" class="icon"></i>reklamacja · priorytet wysoki</div>
+        <div class="check"><i data-lucide="database" class="icon"></i>regulamin: zasady korekty rachunku</div>
+      </div>
+      <p class="same">każda wiadomość przechodzi tę samą analizę</p>
+    </div>
+    <div class="branch-links" data-n="3" aria-hidden="true">
+      <span class="decision"><b>?</b></span>
+      <svg class="link" viewBox="0 0 58 14" preserveAspectRatio="none"><line x1="0" y1="7" x2="47" y2="7"/><path d="M47 2 L57 7 L47 12 Z"/></svg>
+      <svg class="link" viewBox="0 0 58 14" preserveAspectRatio="none"><line x1="0" y1="7" x2="47" y2="7"/><path d="M47 2 L57 7 L47 12 Z"/></svg>
+      <svg class="link" viewBox="0 0 58 14" preserveAspectRatio="none"><line x1="0" y1="7" x2="47" y2="7"/><path d="M47 2 L57 7 L47 12 Z"/></svg>
+    </div>
+    <div class="branch-targets">
+      <div class="node" data-step="3">
+        <span class="step-no">03A</span>
+        <h3><i data-lucide="mail-check" class="icon"></i>Projekt odpowiedzi<span class="key" data-k="a">A</span></h3>
+        <p class="cond">jeśli odpowiedź jest w dokumentach</p>
+        <span class="badge"><i data-lucide="user-check" class="icon"></i>wysyłka po zatwierdzeniu przez pracownika</span>
+      </div>
+      <div class="or">albo</div>
+      <div class="node" data-step="3">
+        <span class="step-no">03B</span>
+        <h3><i data-lucide="users" class="icon"></i>Właściwy dział<span class="key" data-k="b">B</span></h3>
+        <p class="cond">jeśli potrzebny jest ekspert lub decyzja</p>
+        <span class="badge"><i data-lucide="route" class="icon"></i>Dział Rozliczeń</span>
+      </div>
+      <div class="or">albo</div>
+      <div class="node" data-step="3">
+        <span class="step-no">03C</span>
+        <h3><i data-lucide="ticket" class="icon"></i>Zgłoszenie z terminem<span class="key" data-k="c">C</span></h3>
+        <p class="cond">jeśli sprawę trzeba zarejestrować i śledzić</p>
+        <span class="badge"><i data-lucide="clock" class="icon"></i>termin i przypomnienia</span>
+      </div>
+    </div>
+  </div>
+</figure>
+
+<!-- ─── Rys. 3 Prosty język ─── -->
+<figure class="fig" id="fig-plain">
+  <div class="fig-head"><span class="fig-no">Rys. 3</span><h2 class="fig-title">Ta sama informacja w prostym języku</h2></div>
+  <div class="plain">
+    <div class="node alt" data-step="1">
+      <span class="step-no">PRZED</span>
+      <h3><i data-lucide="file-text" class="icon"></i>Pismo urzędowe</h3>
+      <p class="letter" data-text="before">Mając na uwadze przedłożoną dokumentację fotograficzną wskazującą stan wodomierza na poziomie 1 284,6 m³, uprzejmie informujemy, iż Przedsiębiorstwo dokona korekty należności, a nadpłata zostanie zaliczona na poczet przyszłych należności, chyba że Odbiorca usług złoży w terminie 14 dni od dnia otrzymania niniejszego pisma wniosek o jej zwrot.</p>
+      <div class="stats" data-stats="before"></div>
+      <div class="bars" data-bars="before"></div>
+    </div>
+    <div class="link-cell" aria-hidden="true">
+      <svg class="link" viewBox="0 0 58 14" preserveAspectRatio="none"><line x1="0" y1="7" x2="47" y2="7"/><path d="M47 2 L57 7 L47 12 Z"/></svg>
+      <span>upraszczanie</span>
+    </div>
+    <div class="node" data-step="3">
+      <span class="step-no">PO</span>
+      <h3><i data-lucide="mail-check" class="icon"></i>Prosty język</h3>
+      <p class="letter" data-text="after">Poprawimy Pana rachunek. Na zdjęciu wodomierz pokazuje 1 284,6 m³. Nadpłatę odliczymy od kolejnego rachunku. Woli Pan zwrot na konto? Proszę napisać do nas do 3 listopada.</p>
+      <div class="stats" data-stats="after"></div>
+      <div class="bars" data-bars="after"></div>
+    </div>
+  </div>
+  <div class="swaps" aria-label="Przykładowe zamiany">
+    <span class="swap"><s>Odbiorca usług</s><b>Pan</b></span>
+    <span class="swap"><s>dokona korekty należności</s><b>poprawimy rachunek</b></span>
+    <span class="swap"><s>zaliczona na poczet przyszłych należności</s><b>odliczymy od kolejnego rachunku</b></span>
+    <span class="swap"><s>w terminie 14 dni od dnia otrzymania</s><b>do 3 listopada</b></span>
+  </div>
+</figure>
+
+<p class="caption">Ilustracje poglądowe. Przykład: fikcyjne przedsiębiorstwo wodociągowo-kanalizacyjne; dokumenty, osoby i liczby są przykładowe. Paski na rys. 3 to długość kolejnych zdań w słowach.</p>
+
+</main>
+
+<script>
+// ─── Constants ───
+const THEMES = [
+  { id: "kontur", name: "Kontur" },
+  { id: "miekki", name: "Miękki" },
+  { id: "quantica", name: "Quantica" },
+  { id: "redakcja", name: "Redakcyjny" },
+  { id: "plan", name: "Techniczny" },
+  { id: "kolor", name: "Kolorowy" },
+  { id: "rubryka", name: "Magazyn: rubryka" },
+  { id: "pop", name: "Magazyn: pop" },
+  { id: "rozjazd", name: "Rozjazd" },
+  { id: "przyklady", name: "Przykłady" }
+];
+const STORAGE_KEY = "zk-ilustracje-theme";
+const WORD_RE = /[\p{L}\p{N}]+(?:[.,\/\-][\p{L}\p{N}]+)*/gu;
+const SENTENCE_SPLIT_RE = /(?<=[.?!])\s+/;
+
+// ─── State ───
+const state = { theme: THEMES[0].id };
+
+// ─── DOM refs ───
+const el = {
+  root: document.documentElement,
+  opts: document.getElementById("themeOpts"),
+  live: document.getElementById("liveRegion")
+};
+
+// ─── Helpers ───
+const countWords = (s) => (s.match(WORD_RE) || []).length;
+const plural = (n, one, few, many) => {
+  if (n === 1) return one;
+  const r10 = n % 10, r100 = n % 100;
+  return r10 >= 2 && r10 <= 4 && (r100 < 12 || r100 > 14) ? few : many;
+};
+const analyse = (text) => {
+  const lengths = text.trim().split(SENTENCE_SPLIT_RE).map(countWords);
+  const total = lengths.reduce((a, b) => a + b, 0);
+  return { lengths, total, avg: total / lengths.length };
+};
+const storage = {
+  get() { try { return localStorage.getItem(STORAGE_KEY); } catch { return null; } },
+  set(v) { try { localStorage.setItem(STORAGE_KEY, v); } catch { /* storage unavailable */ } }
+};
+const themeFromHash = () => {
+  const n = parseInt(location.hash.replace("#v", ""), 10);
+  return THEMES[n - 1] ? THEMES[n - 1].id : null;
+};
+
+// ─── Render ───
+function renderSwitcher() {
+  el.opts.innerHTML = THEMES.map((t, i) =>
+    `<button type="button" data-theme-id="${t.id}" aria-pressed="false"><kbd>${i + 1}</kbd>${t.name}</button>`).join("");
+}
+
+function applyTheme(id, announce) {
+  const i = THEMES.findIndex((t) => t.id === id);
+  if (i < 0) return;
+  state.theme = id;
+  el.root.dataset.theme = id;
+  el.opts.querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.themeId === id)));
+  history.replaceState(null, "", "#v" + (i + 1));
+  storage.set(id);
+  if (announce) el.live.textContent = `Wariant ${i + 1}: ${THEMES[i].name}`;
+}
+
+function renderPlain() {
+  const data = {};
+  document.querySelectorAll("[data-text]").forEach((p) => { data[p.dataset.text] = analyse(p.textContent); });
+  const max = Math.max(...Object.values(data).flatMap((d) => d.lengths));
+  Object.entries(data).forEach(([key, d]) => {
+    const n = d.lengths.length;
+    document.querySelector(`[data-stats="${key}"]`).textContent =
+      `${n} ${plural(n, "zdanie", "zdania", "zdań")} · średnio ${d.avg.toLocaleString("pl-PL", { maximumFractionDigits: 1 })} ${Number.isInteger(d.avg) ? plural(d.avg, "słowo", "słowa", "słów") : "słowa"} na zdanie`;
+    document.querySelector(`[data-bars="${key}"]`).innerHTML =
+      d.lengths.map((len) => `<i style="--w:${(len / max) * 100}%" title="${len} ${plural(len, "słowo", "słowa", "słów")}"></i>`).join("");
+  });
+  document.body.dataset.sentencesBefore = data.before.lengths.length;
+  document.body.dataset.sentencesAfter = data.after.lengths.length;
+}
+
+// ─── Listeners ───
+el.opts.addEventListener("click", (e) => {
+  const b = e.target.closest("button[data-theme-id]");
+  if (b) applyTheme(b.dataset.themeId, true);
+});
+document.addEventListener("keydown", (e) => {
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  const i = THEMES.findIndex((t) => t.id === state.theme);
+  const n = e.key === "0" ? 10 : Number(e.key);
+  if (/^[0-9]$/.test(e.key) && THEMES[n - 1]) applyTheme(THEMES[n - 1].id, true);
+  else if (e.key === "ArrowRight") applyTheme(THEMES[(i + 1) % THEMES.length].id, true);
+  else if (e.key === "ArrowLeft") applyTheme(THEMES[(i - 1 + THEMES.length) % THEMES.length].id, true);
+});
+window.addEventListener("hashchange", () => { const id = themeFromHash(); if (id) applyTheme(id, true); });
+
+// ─── Init ───
+renderSwitcher();
+renderPlain();
+applyTheme(themeFromHash() || storage.get() || THEMES[0].id, false);
+if (window.lucide) lucide.createIcons();
+</script>
+</body>
+</html>
